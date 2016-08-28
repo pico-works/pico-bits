@@ -35,12 +35,11 @@ object Build extends sbt.Build {
         "-Xfatal-warnings",
         "-Xlint",
         "-Yno-adapted-args",
-        "-Ywarn-numeric-widen",
         "-Ywarn-value-discard",
         "-Xfuture")
 
       val versionSpecificFlags = CrossVersion.partialVersion(scalaVersion) match {
-        case Some((2, scalaMajor)) if scalaMajor >= 11 => Seq("-Ywarn-unused-import")
+        case Some((2, scalaMajor)) if scalaMajor >= 11 => Seq("-Ywarn-numeric-widen", "-Ywarn-unused-import")
         case _ => Seq.empty
       }
 
